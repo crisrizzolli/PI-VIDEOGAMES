@@ -30,38 +30,40 @@ router.get("/:id", async (req, res) => {
     res.status(200).send(videogamesTotal);
   }
 });
-
 router.post("/", async (req, res) => {
-  let {
-    id,
-    name,
-    description,
-    released,
-    rating,
-    platform,
-    img,
-    genre,
-    createdInDb,
-  } = req.body;
+    let { name, description, released, rating, platforms, genre, img } = req.body;
+    try {
+      if (name) {
+        const allVideoGame = await getAllVideogames();
+        const isVideogame = allVideoGame.find(
+          (e) => e.name.toLowerCase() === name.toLowerCase()
+        );
+        if (!isVideogame) {
+          const videogame = await Videogame.create({
+            name,
+            description,
+            released,
+            rating,
+            img,
+            platforms,
+            genre,
+          });
+          const genreDb = await Genre.findAll({
+            where: { name: genre },
+          });
+  
+          const platformDb = await Platform.findAll({
+            where: { name: platforms },
+          });
+          await videogame.addGenre(genreDb), videogame.addPlatform(platformDb);
+          res.status(201).send("Video Game created successfully");
+        }
+        res.status(404).send("Videogame name already exist");
+      }
+      if (!name) return res.status(404).send("Videogame name is obligtory");
+    } catch (e) {
+      console.log(e); 
+    }
+  });
 
-  let videogameCreated = await Videogame.create({
-    id,
-    name,
-    description,
-    released,
-    rating,
-    platform,
-    img,
-    genre,
-    createdInDb,
-  });
-  let genreDb = await Genre.findAll({
-    where: { name: genre },
-  });
-  let platformDb = await Platform.findAll({
-    where: { name: platform },
-  });
-  videogameCreated.addGenre(genreDb), videogameCreated.addPlatform(platformDb);
-  res.send("Videogame create successfully");
-});
 module.exports = router;

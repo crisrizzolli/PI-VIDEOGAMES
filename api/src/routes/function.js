@@ -1,6 +1,6 @@
 const axios = require("axios");
-const { API_KEY } = process.env;
 const { Videogame, Genre, Platform } = require("../db");
+const { API_KEY } = process.env;
 
 const url = `https://api.rawg.io/api/games?key=${API_KEY}&page`;
 
@@ -28,20 +28,20 @@ const getApiInfo = async () => {
       description: e.description,
       released: e.released,
       rating: e.rating,
-      genre: e.genres.map((e) => e.name),
+      genres: e.genres.map((e) => e.name),
       platforms: e.parent_platforms.map((e) => e.platform.name),
       img: e.background_image,
     };
   });
   return apiInfo;
 };
-const getDbInfo = async () => {
+
+/* const getDbInfo = async () => {
   return await Videogame.findAll({
     include: {
       model: Genre,
       attributes: ["name"],
       through: {
-        //a traves de
         attributes: [],
       },
       model: Platform,
@@ -51,17 +51,40 @@ const getDbInfo = async () => {
       },
     },
   });
+};  */
+
+const getDbInfo = async () => {
+  return await Videogame.findAll({
+    include: [
+      {
+        model: Genre,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+      {
+        model: Platform,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    ],
+  });
 };
+
 const getAllVideogames = async () => {
-    try{
-  const apiInfo = await getApiInfo();
-  const dbInfo = await getDbInfo();
-  const infoTotal = apiInfo.concat(dbInfo);
-  return infoTotal;
-    }catch (e){
-        console.log(e)
-    }
+  try {
+    const apiInfo = await getApiInfo();
+    const dbInfo = await getDbInfo();
+    const infoTotal = apiInfo.concat(dbInfo);
+    return infoTotal;
+  } catch (e) {
+    console.log(e);
+  }
 };
+
 module.exports = {
   getApiInfo,
   getDbInfo,
