@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllVideogames } = require("./function");
+const { getAllVideogames, getAllVideogameDetail } = require("./functions");
 const { Videogame, Genre, Platform } = require("../db");
 const router = express.Router();
 
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   let { id } = req.params;
-  let videogamesTotal = await getAllVideogames();
+  let videogamesTotal = await getAllVideogamesDetail(id);
   // if (id) {
   //   let videogamesId = videogamesTotal.filter((e) => e.id.toString() === id);
   //   videogamesId.length

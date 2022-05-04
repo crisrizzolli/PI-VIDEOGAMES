@@ -10,7 +10,7 @@ import styles from "./Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allVideogames = useSelector((state) => state.videogame);
+  const allVideogames = useSelector((state) => state.videogames);
 
   //Paginado acá abajo
   const [currentPage, setCurrentPage] = useState(1);
@@ -65,7 +65,7 @@ export default function Home() {
                 />
               </div>
               <div className={styles.cards}>
-                {currentVideogames?.map((e, k) => {
+                {currentVideogames?.map((e) => {
                   return (
                     <div key={e.id} className={styles.card}>
                       <Card
@@ -73,6 +73,8 @@ export default function Home() {
                         name={e.name}
                         image={e.img}
                         genres={e.genres}
+                        createdInDb={e.createdInDb}
+                        rating={e.rating}
                       />
                     </div>
                   );

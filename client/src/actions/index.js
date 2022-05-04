@@ -4,6 +4,7 @@ export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const CLEAN_VIDEOGAMES = "CLEAN_VIDEOGAMES";
 export const GET_VIDEOGAME_NAME = "GET_VIDEOGAME_NAME";
 export const GET_ALL_GENRES = "GET_ALL_GENRES";
+export const GET_ALL_PLATFORMS = "GET_ALL_PLATFORMS";
 export const FILTER_CREATED = "FILTER_CREATED";
 export const ORDER_NAME = "ORDER_NAME";
 export const FILTER_GENRE = "FILTER_GENRE";
@@ -39,6 +40,20 @@ export const getAllGenres = () => {
       let json = await axios.get("http://localhost:3001/genres");
       return dispatch({
         type: GET_ALL_GENRES,
+        payload: json.data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
+export const getAllPlatforms = () => {
+  return async (dispatch) => {
+    try {
+      let json = await axios.get("http://localhost:3001/platforms");
+      return dispatch({
+        type: GET_ALL_PLATFORMS,
         payload: json.data,
       });
     } catch (e) {
@@ -103,43 +118,20 @@ export const getVideogameByName = (payload) => {
   };
 };
 
-/* export const getPokemonByName = (payload) => {
-  return (dispatch) => {
-    axios
-      .get(`http://localhost:3001/pokemons?name=${payload}`)
-      .then((json) => json.data)
-      .then((json) => dispatch({ type: GET_POKEMON_NAME, payload: json }))
-      .catch((e) => {
-        alert("Pokemon not found");
-        window.location.href = "http://localhost:3000/home";
-        console.log(e);
-      });
-  };
-}; */
 
 export const getDetail = (id) => {
   return async (dispatch) => {
     try {
-      let json = await axios.get(`http://localhost:3001/videogames/${id}`);      
+      let json = await axios.get(`http://localhost:3001/videogames/${id}`);
       return dispatch({
         type: GET_DETAILS,
-        payload: json.data,     
-      });      
+        payload: json.data,
+      });
     } catch (e) {
       console.log(e);
     }
   };
 };
-
-/* export const getDetail = (id) => {
-  return (dispatch) => {
-    axios
-      .get(`http://localhost:3001/pokemons/${id}`)
-      .then((json) => json.data)
-      .then((json) => dispatch({ type: GET_DETAILS, payload: json }))
-      .catch((err) => console.log(err));
-  };
-}; */
 
 export const cleanDetail = (dispatch) => {
   return dispatch({
@@ -163,11 +155,3 @@ export const postVideogame = (payload) => {
     }
   };
 };
-
-/* export const postPokemon = (payload) => {
-  return () => {
-let createPoke = axios.post("http://localhost:3001/pokemons", payload);
-alert("New pokemón is created!");
-return createPoke;   
-  };
-}; */

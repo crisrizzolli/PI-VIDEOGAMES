@@ -23,7 +23,7 @@ const Filters = ({ setCurrentPage, setOrder }) => {
     dispatch(filterCreated(e.target.value));
     setCurrentPage(1);
   };
-  
+
   const handleOrderName = (e) => {
     e.preventDefault();
     dispatch(orderName(e.target.value));

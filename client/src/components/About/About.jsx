@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./About.module.css";
-import gav from "../../img/gavt.jpg";
+import gav from "../../img/Cris.jpg";
 import { Link } from "react-router-dom";
 
 function About() {
