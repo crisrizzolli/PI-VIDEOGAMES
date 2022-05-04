@@ -19,16 +19,16 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  const videogamesTotal = await getAllVideogames();
-  if (id) {
-    let videogamesId = videogamesTotal.filter((e) => e.id.toString() === id);
-    videogamesId.length
-      ? res.status(200).send(videogamesId)
-      : res.status(404).send("Id not found");
-  } else {
+  let { id } = req.params;
+  let videogamesTotal = await getAllVideogames();
+  // if (id) {
+  //   let videogamesId = videogamesTotal.filter((e) => e.id.toString() === id);
+  //   videogamesId.length
+  //     ? res.status(200).send(videogamesId)
+  //     : res.status(404).send("Id not found");
+  // } else {
     res.status(200).send(videogamesTotal);
-  }
+  
 });
 router.post("/", async (req, res) => {
     let { name, description, released, rating, platforms, genre, img } = req.body;
