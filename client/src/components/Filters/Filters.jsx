@@ -12,7 +12,7 @@ import styles from "./Filters.module.css";
 
 const Filters = ({ setCurrentPage, setOrder }) => {
   const dispatch = useDispatch();
-  const allGenres = useSelector((state) => state.types);
+  const allGenres = useSelector((state) => state.genres);
 
   useEffect(() => {
     dispatch(getAllGenres());
@@ -30,6 +30,7 @@ const Filters = ({ setCurrentPage, setOrder }) => {
     setCurrentPage(1);
     setOrder(e.target.value);
   };
+
   const handleFilterGenre = (e) => {
     e.preventDefault();
     dispatch(filterGenre(e.target.value));
@@ -89,8 +90,6 @@ const Filters = ({ setCurrentPage, setOrder }) => {
           }}
           className={styles.select}
         >
-          {/*     <option className={styles.order}>Choose order...</option> */}
-
           <option className={styles.order}>Rating</option>
 
           <option value="asc">ASC</option>

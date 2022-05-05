@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, cleanDetail, cleanVideogames } from "../../actions";
 import { useEffect } from "react";
-import noImage from "../../img/noImage.png";
+import noImage from "../../img/noImage.jpg";
 import Loading from "../Loading/Loading";
 import styles from "./Detail.module.css";
 

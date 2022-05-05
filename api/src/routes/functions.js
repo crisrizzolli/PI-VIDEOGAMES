@@ -2,7 +2,7 @@ const axios = require("axios");
 const { Videogame, Genre, Platform } = require("../db");
 const { API_KEY } = process.env;
 
-const url = `https://api.rawg.io/api/games?key=${API_KEY}&page`;
+const url = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
 const getApiInfo = async () => {
   let apiUrl1 = [],
@@ -12,11 +12,11 @@ const getApiInfo = async () => {
     apiUrl5 = [];
 
   Promise.all([
-    (apiUrl1 = await axios.get(`${url}_size=20`)),
-    (apiUrl2 = await axios.get(`${url}=2&page_size=20`)),
-    (apiUrl3 = await axios.get(`${url}=3&page_size=20`)),
-    (apiUrl4 = await axios.get(`${url}=3&page_size=20`)),
-    (apiUrl5 = await axios.get(`${url}=3&page_size=20`)),
+    (apiUrl1 = await axios.get(url)),
+    (apiUrl2 = await axios.get(`${url}&page=2`)),
+    (apiUrl3 = await axios.get(`${url}&page=3`)),
+    (apiUrl4 = await axios.get(`${url}&page=4`)),
+    (apiUrl5 = await axios.get(`${url}&page=5`)),
   ]);
 
   let apiInfoTotal = [
@@ -39,27 +39,6 @@ const getApiInfo = async () => {
     };
   });
   return apiInfo;
-};
-
-const getDbInfo = async () => {
-  return await Videogame.findAll({
-    include: [
-      {
-        model: Genre,
-        attributes: ["name"],
-        through: {
-          attributes: [],
-        },
-      },
-      {
-        model: Platform,
-        attributes: ["name"],
-        through: {
-          attributes: [],
-        },
-      },
-    ],
-  });
 };
 
 const getVideogameDetail = async (arg) => {
@@ -85,15 +64,42 @@ const getVideogameDetail = async (arg) => {
   }
 };
 
-const getAllVideogames = async () => {
-  try {
-    const apiInfo = await getApiInfo();
-    const dbInfo = await getDbInfo();
-    const infoTotal = apiInfo.concat(dbInfo);
-    return infoTotal;
-  } catch (e) {
-    console.log(e);
-  }
+/* const getDbInfo = async () => {
+  return await Videogame.findAll({
+    include: {
+      model: Genre,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+      model: Platform,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
+};  */
+
+const getDbInfo = async () => {
+  return await Videogame.findAll({
+    include: [
+      {
+        model: Genre,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+      {
+        model: Platform,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    ],
+  });
 };
 
 const getAllVideogameDetail = async (arg) => {
@@ -107,10 +113,21 @@ const getAllVideogameDetail = async (arg) => {
   }
 };
 
+const getAllVideogames = async () => {
+  try {
+    const apiInfo = await getApiInfo();
+    const dbInfo = await getDbInfo();
+    const infoTotal = apiInfo.concat(dbInfo);
+    return infoTotal;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 module.exports = {
   getApiInfo,
   getDbInfo,
-  getVideogameDetail,
   getAllVideogames,
+  getVideogameDetail,
   getAllVideogameDetail,
 };

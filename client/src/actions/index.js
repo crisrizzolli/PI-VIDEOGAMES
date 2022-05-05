@@ -118,6 +118,19 @@ export const getVideogameByName = (payload) => {
   };
 };
 
+/* export const getPokemonByName = (payload) => {
+  return (dispatch) => {
+    axios
+      .get(`http://localhost:3001/pokemons?name=${payload}`)
+      .then((json) => json.data)
+      .then((json) => dispatch({ type: GET_POKEMON_NAME, payload: json }))
+      .catch((e) => {
+        alert("Pokemon not found");
+        window.location.href = "http://localhost:3000/home";
+        console.log(e);
+      });
+  };
+}; */
 
 export const getDetail = (id) => {
   return async (dispatch) => {
@@ -132,6 +145,16 @@ export const getDetail = (id) => {
     }
   };
 };
+
+/* export const getDetail = (id) => {
+  return (dispatch) => {
+    axios
+      .get(`http://localhost:3001/pokemons/${id}`)
+      .then((json) => json.data)
+      .then((json) => dispatch({ type: GET_DETAILS, payload: json }))
+      .catch((err) => console.log(err));
+  };
+}; */
 
 export const cleanDetail = (dispatch) => {
   return dispatch({
@@ -155,3 +178,11 @@ export const postVideogame = (payload) => {
     }
   };
 };
+
+/* export const postPokemon = (payload) => {
+  return () => {
+let createPoke = axios.post("http://localhost:3001/pokemons", payload);
+alert("New pokemón is created!");
+return createPoke;   
+  };
+}; */

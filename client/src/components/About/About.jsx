@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function About() {
   return (
     <div className={styles.container}>
-      <div className={styles.name}>Germán A. Valencia T.</div>
+      <div className={styles.name}>Cristina Rizzolli</div>
       <div className={styles.description}>
         <div>
           <img className={styles.picture} src={gav} alt="img not found"></img>
