@@ -6,23 +6,22 @@
     box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.651);
     width: 100%;
     height: 100%;
-    /* padding-top: 2vh;
-    padding-bottom: 2vh; */
+
 }
 
 .img {
-    width: 15vw;
+    width: 10vw;
     height: 15vh;
     border-radius: 5px;
-    margin-left: 6.2vw;
+    margin-left: 4.2vw;
 }
 
 .btn {
     width: 15vw;
     height: 5vh;
-    margin-top: 3vh;
+    margin-top: 5vh;
     margin-right: 8.9vw;
-    background-color: #0026ffa8;
+    background-color: #324c36a8;
     color:  rgb(255, 217, 2);
     border: none;
     border-radius: 5px;
@@ -36,5 +35,5 @@
 .btn:hover {
     box-shadow: 2px 1px 2px 1px rgba(255, 255, 255, 0.651);
     background-color: rgb(255, 217, 2);
-    color: #0026ffa8;
+    color: #324c36a8;
 }

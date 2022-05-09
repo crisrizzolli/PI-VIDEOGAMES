@@ -64,23 +64,6 @@ const getVideogameDetail = async (arg) => {
   }
 };
 
-/* const getDbInfo = async () => {
-  return await Videogame.findAll({
-    include: {
-      model: Genre,
-      attributes: ["name"],
-      through: {
-        attributes: [],
-      },
-      model: Platform,
-      attributes: ["name"],
-      through: {
-        attributes: [],
-      },
-    },
-  });
-};  */
-
 const getDbInfo = async () => {
   return await Videogame.findAll({
     include: [

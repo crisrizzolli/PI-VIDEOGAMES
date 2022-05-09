@@ -16,7 +16,9 @@ router.get("/", async (req, res) => {
       where: { name: e, id: id[i] },
     });
   });
-  const allPlatforms = await Platform.findAll();
+
+  const allPlatforms = await Platform.findAll({ order: [["name", "ASC"]] });
   res.send(allPlatforms);
 });
+
 module.exports = router;

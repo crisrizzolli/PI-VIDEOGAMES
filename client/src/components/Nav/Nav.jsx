@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import imgnav from "../../img/imagenLara.jpg";
+import imgnav from "../../img/18 tomb.png";
 import styles from "./Nav.module.css";
 
 const Nav = () => {

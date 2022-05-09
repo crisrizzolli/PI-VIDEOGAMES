@@ -18,7 +18,7 @@
     width: 30px;
     height: 30px;
     padding: 4px;
-    background-color: #0026ffa8;
+    background-color: #324c36a8;
   }
   
   .items:hover {
@@ -40,12 +40,12 @@
   }
   
   .a:hover {
-    color: #0026ffa8;
+    color: #324c36a8;
   }
   
   .pn {
     color: rgb(255, 217, 2);
-    background-color: #0026ffa8;
+    background-color: #324c36a8;
     border-radius: 5px;
     font-family: "Verdana", sans-serif;
   }

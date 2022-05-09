@@ -5,9 +5,9 @@ import styles from "./Card.module.css";
 
 export default function Card({ name, image, genres, id, createdInDb, rating }) {
   return (
-    <div>
+    <div >
       <NavLink className={styles.none} to={`/videogames/${id}`}>
-        <div>
+        <div className = {styles.todo}>
           <img
             className={styles.img}
             src={image ? image : noImage}

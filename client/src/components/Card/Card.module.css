@@ -1,6 +1,6 @@
 .img{
-    width: 13vw;
-    height: 8vw;
+    width: 12vw;
+    height: 7vw;
 }
 
 .genres {
@@ -8,15 +8,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     margin-bottom: 1vh;
     text-decoration: none;    
 }
-
-/* .typesImg {
-    width: 2vw;
-    height: 2vw;
-} */
 
 .text {
     text-decoration: none;
@@ -38,4 +33,10 @@
     font-size: 1.1rem;
     color: rgba(48, 30, 9, 0.616);
     
+}
+.todo{
+    transition: tranform 0.3s;
+}
+.todo:hover {
+    transform: scale(1);
 }
