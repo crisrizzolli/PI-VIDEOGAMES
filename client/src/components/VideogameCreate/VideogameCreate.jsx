@@ -25,13 +25,13 @@ const VideogameCreate = () => {
     platforms: [],
     img: "",
   });
-
+               ///////// regex /////// expresiones regulares
   let noEmpty = /\S+/;
   let validateName = /^.{5,200}$/;
-  let validateNum = /^\d+$/;
-  let validateUrl = /^(ftp|http|https):\/\/[^ "]+$/;
+  let validateNum = /^[1-5]+([.][1-5]+)?$/;
+  let validateUrl = /(https?:\/\/.*\.(?:png|jpg))/i;
   let validateDate = /^\d{4}\/\d{2}\/\d{2}$/;
-  let validateWords = /^.{5,200}$/;
+  let validateWords = /^.{5,100}$/;
 
   const validate = (input) => {
     let errors = {};
@@ -107,9 +107,6 @@ const VideogameCreate = () => {
       !errors.rating &&
       !errors.released &&
       !errors.description &&
-      /*  !errors.speed &&
-      !errors.height &&
-      !errors.weight && */
       !errors.img
     ) {
       dispatch(postVideogame(input));
@@ -118,9 +115,6 @@ const VideogameCreate = () => {
         rating: "",
         released: "",
         description: "",
-        /*   speed: "",
-        height: "",
-        weight: "", */
         genres: [],
         platforms: [],
         img: "",

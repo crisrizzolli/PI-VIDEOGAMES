@@ -4,13 +4,14 @@ import noImage from "../../img/noImage.jpg";
 import styles from "./Card.module.css";
 
 export default function Card({ name, image, genres, id, createdInDb, rating }) {
+  console.log(id)
   return (
     <div >
       <NavLink className={styles.none} to={`/videogames/${id}`}>
         <div className = {styles.todo}>
           <img
             className={styles.img}
-            src={image ? image : noImage}
+            src={/(https?:\/\/.*\.(?:png|jpg))/i.test(image) ? image : noImage}
             alt="img not found"
             width="200px"
             height="250vh"

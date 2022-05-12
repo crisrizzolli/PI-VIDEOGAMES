@@ -41,10 +41,10 @@ const getApiInfo = async () => {
   return apiInfo;
 };
 
-const getVideogameDetail = async (arg) => {
+const getVideogameDetail = async (id) => {
   try {
     const apiData = await axios.get(
-      `https://api.rawg.io/api/games/${arg}?key=${API_KEY}`
+      `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
     );
     const data = await apiData.data;
     const videogameData = {
@@ -85,9 +85,9 @@ const getDbInfo = async () => {
   });
 };
 
-const getAllVideogameDetail = async (arg) => {
+const getAllVideogameDetail = async (id) => {
   try {
-    const apiDetail = await getVideogameDetail(arg);
+    const apiDetail = await getVideogameDetail(id);
     const dbInfo = await getDbInfo();
     const detailTotal = dbInfo.concat(apiDetail);
     return detailTotal;

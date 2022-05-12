@@ -18,7 +18,6 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;  
- /*  border: solid 0.5px rgba(0, 4, 255, 0.651) ;  */
   gap: 149px;
   display: flex;
   flex-direction: column;
@@ -43,20 +42,13 @@
 
 .container {
     display: flex;
-   /*  flex-direction: column; */
-    /* flex-wrap: wrap; */
     justify-content: center;
-    /* align-items: center;
-    height: 100%;
-    border-radius: 10px; */
   }
   
   .card {
     margin-top: 2%;
     border-radius: 10px;
     padding: 10px;
-    /* background-color: #0026ffa8;
-      box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.651); */
     background-color: rgba(223, 226, 255, 0.842);
     box-shadow: 0px 0px 5px 0px #324c36a8;
     height: vh;

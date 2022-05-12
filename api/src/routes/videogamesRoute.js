@@ -60,6 +60,14 @@ router.post("/", async (req, res) => {
   } catch (e) {
     console.log(e);
   }
+  router.delete("/:id", async (req, res) => {
+    let { id } = req.params;
+    try{
+      let delVideogame = await
+    }
+    let videogamesTotal = await getAllVideogameDetail(id);
+    res.status(200).send(videogamesTotal);
+  });
 });
 
 module.exports = router;

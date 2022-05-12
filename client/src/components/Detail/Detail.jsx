@@ -35,7 +35,7 @@ const Detail = (props) => {
                 </p>
                 <img
                   className={styles.img}
-                  src={e.img ? e.img : noImage}
+                  src={/(https?:\/\/.*\.(?:png|jpg))/i.test(e.img) ? e.img : noImage}
                   alt="img not found"
                 />
 

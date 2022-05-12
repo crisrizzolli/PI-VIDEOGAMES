@@ -64,7 +64,7 @@ function rootReducer(state = initialState, action) {
         videogames: createdFiltered //.length === 0 ? copy : createdFiltered,
       };
     case FILTER_GENRE:
-      let copyTwo = state.allVideogames;
+      let copyTwo = state.videogames;
       let genreFiltered =
         action.payload === "all"
           ? copyTwo
